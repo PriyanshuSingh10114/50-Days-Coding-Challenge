@@ -1,0 +1,54 @@
+// Day2 of 50 Days Coding Challenge
+
+876. Middle of the Linked List
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+class Solution {
+public:
+
+    int getLength(ListNode* head){
+        int length=0;
+        while(head){
+            length++;
+            head=head->next;
+        }
+        return length;
+    }
+    ListNode* middleNode(ListNode* head) {
+        int length=getLength(head);
+
+        int middle=length/2;
+        while(middle--){
+            head=head->next;
+        }
+        return head;
+    }
+};
+
+
+258. Add Digits
+
+class Solution {
+public:
+    int addDigits(int num) {
+        while(num>=10){
+            int sum=0;
+            while(num>0){
+                sum=sum+num%10;
+                num=num/10;
+            }
+            num=sum;
+        }
+        return num;
+    }
+};
