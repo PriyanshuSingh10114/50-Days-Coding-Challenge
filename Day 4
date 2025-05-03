@@ -1,0 +1,54 @@
+//Day 4 of 50 Days Coding Challenge
+
+141. Linked List Cycle
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+
+        ListNode* slow=head;
+        ListNode* fast=head;
+
+        while(fast!=nullptr && fast->next!=nullptr){
+            slow=slow->next;
+            fast=fast->next->next;
+
+            if(slow==fast){
+                return true;
+            }
+        }
+        return false;
+        
+    }
+};
+
+
+9. Palindrome Number
+
+class Solution {
+public:
+    bool isPalindrome(int x) {
+       long long reverse=0;
+       long long temp=x;
+
+       if(x<0){
+        return false;
+       }
+
+       while(temp!=0){
+        int remainder=temp%10;
+        reverse=reverse*10 + remainder;
+        temp=temp/10;
+       }
+
+       return reverse==x;
+    }
+    
+};
