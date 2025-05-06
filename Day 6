@@ -1,0 +1,66 @@
+//Day 6
+
+
+203. Remove Linked List Elements
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode* tempNode=new ListNode();
+        tempNode->next=head;
+
+        ListNode* curr=tempNode;
+        while(curr->next){
+            if(curr->next->val==val){
+                curr->next=curr->next->next;
+            }
+            else{
+                curr=curr->next;
+            }
+        }
+        return tempNode->next;    
+    }
+};
+
+
+202. Happy Number
+
+class Solution {
+public:
+
+    int numSquareSum(int n) {
+        int num=0;
+        while (n!=0) {
+            int digit=n%10;
+            num+=digit*digit;
+            n/=10;
+        }
+        return num;
+    }
+
+    int isHappy(int n){
+        set<int> st;
+        while (1){
+            n=numSquareSum(n);
+            if(n==1){
+                return true;
+            }
+            if(st.find(n)!=st.end()){
+                return false;
+            }
+            st.insert(n);
+        }
+    }
+};
